@@ -49,7 +49,8 @@ export const Signup = () => {
                                         setPassword(e.target.value)
                                     }} />
                                 </div>
-                                <button type="submit" className="w-full text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" onClick={async (e) => {
+                                <button type="submit" className="w-full text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" onClick={
+                                    async (e) => {
                                     e.preventDefault();
                                     const response = await axios.post("http://localhost:3000/api/v1/user/signup", {
                                         username,
@@ -60,7 +61,7 @@ export const Signup = () => {
                                     );
                                     console.log("Token:", response.data.token); // Check if the token exists
                                     localStorage.setItem("token", response.data.token)
-                                    navigate("/dashboard")
+                                    navigate("/dashboard?firstname=" + firstname)
                                 }}>Sign Up</button>
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                                     Already have an account? <a href="/signin" className="font-medium text-sky-500 hover:underline dark:text-sky-600">Sign in</a>

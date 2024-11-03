@@ -35,23 +35,25 @@ export const Signin = () => {
                                         setPassword(e.target.value);
                                     }} />
                                 </div>
-                                <button type="submit" className="w-full text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" onClick={async () => {
+                                <button type="submit" className="w-full text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" onClick={
+                                    async (e) => {
+                                    e.preventDefault();
                                     const response = await axios.post("http://localhost:3000/api/v1/user/signin", {
                                         username,
                                         password,
-                                    },
+                                    }
                                     );
-                                    localStorage.setItem("token", response.data.token);
-                                    navigate("/dashboard");
-                                }}>Sign In</button>
-                                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Dont have an account? <a href="/signup" className="font-medium text-sky-500 hover:underline dark:text-sky-600">Sign Up</a>
-                                </p>
-                            </form>
-                        </div>
+                                    console.log("Token:", response.data.token); // Check if the token exists
+                                    localStorage.setItem("token", response.data.token)
+                                    navigate("/dashboard?firstname=" + response.data.firstname)}}>Sign In</button>
+                            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                                Dont have an account? <a href="/signup" className="font-medium text-sky-500 hover:underline dark:text-sky-600">Sign Up</a>
+                            </p>
+                        </form>
                     </div>
                 </div>
-            </section>
         </div>
+            </section >
+        </div >
     )
 }

@@ -86,7 +86,7 @@ const signupUser = async (req, res) => {
 
 
 const signinSchema = zod.object({
-	username: zod.string(),
+	username: zod.string().email(),
 	password: zod.string(),
 });
 
@@ -101,7 +101,7 @@ const signinUser = async (req, res) => {
 
 	const { username, password } = req.body;
 
-	const { success } = signinSchema.safeParse(req.body);
+	const { success } = signinSchema.safeParse({username, password});
 
 	if (!success) {
 		return res.status(411).send({
@@ -109,9 +109,10 @@ const signinUser = async (req, res) => {
 		});
 	}
 
-	const user = await User.findOne({
-		$or: [{ username }, { password }],
-	});
+	const user = await User.findOne({ 
+        $or: [{ username }],
+    });
+
 
 	if (!user) {
 		return res.status(411).send({
@@ -123,10 +124,12 @@ const signinUser = async (req, res) => {
 		{
 			_id: user._id,
 		},
-		process.env.JWT_SECRET
+		process.env.JWT_SECRET,
+        { expiresIn: '1h' }
 	);
 
 	return res.status(200).send({
+        msg: "User sign-ined Successfully",
 		token: token,
         firstname: user.firstname,
         
