@@ -18,7 +18,7 @@ const getBalance = async (req, res) => {
 
 const transferSchema = zod.object({
     toUser: zod.string(),
-    amount: zod.number(),
+    amount: zod.string(),
 });
 
 // An endpoint for user to transfer money to another account
@@ -41,13 +41,14 @@ const transferMoney = async (req, res) => {
 
     console.log(`Logged-in user: ${req.userId}`); // Debugging log
     console.log(`Receiver userId: ${toUser}, Amount: ${amount}`); // Debugging log
-    
 
     // Fetch the accounts within the transaction
-    const senderAccount = await Account.findOne({ userId: req.userId }).session(session);
+    const senderAccount = await Account.findOne({ userId: req.userId }).session(
+        session
+    );
 
-    console.log(senderAccount)
-    console.log(senderAccount.balance)
+    console.log(senderAccount);
+    console.log(senderAccount.balance);
 
     if (senderAccount.balance < amount) {
         await session.abortTransaction();
@@ -86,8 +87,8 @@ const transferMoney = async (req, res) => {
     ).session(session);
 
     await Account.updateOne(
-        { 
-            userId: toUser 
+        {
+            userId: toUser,
         },
         {
             $inc: {

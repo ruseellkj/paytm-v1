@@ -4,8 +4,7 @@ import { Account } from "../models/account.models.js";
 import jwt from "jsonwebtoken";
 
 const signupSchema = zod.object({
-	username: zod.string(),
-	email: zod.string().email(),
+	username: zod.string().email(),
 	password: zod.string(),
 	firstname: zod.string(),
 	lastname: zod.string(),
@@ -20,9 +19,9 @@ const signupUser = async (req, res) => {
 	// remove password field from response
 	// check for user creation
 	// return res
-	const { firstname, lastname, email, username, password } = req.body;
+	const { firstname, lastname, username, password } = req.body;
 
-	const { success } = signupSchema.safeParse({ firstname, lastname, email, username, password });
+	const { success } = signupSchema.safeParse({ firstname, lastname, username, password });
 
 	if (!success) {
 		return res.status(411).send({
@@ -31,7 +30,7 @@ const signupUser = async (req, res) => {
 	}
 
 	const existingUser = await User.findOne({
-		$or: [{ username }, { email }],
+		$or: [{ username }],
 	});
 
 	if (existingUser) {
@@ -44,9 +43,8 @@ const signupUser = async (req, res) => {
 	const user = await User.create({
 		firstname,
 		lastname,
-		email,
 		password,
-		username: username.toLowerCase(),
+		username,
 	});
 
 	const createdUser = await User.findById(user._id).select("-password");
@@ -130,6 +128,8 @@ const signinUser = async (req, res) => {
 
 	return res.status(200).send({
 		token: token,
+        firstname: user.firstname,
+        
 	});
 
 
@@ -184,25 +184,25 @@ const getUsers = async (req, res) => {
 	const filter = req.query.filter || "";
 
 	const users = await User.find({
-		$or: [{
-			firstName: {
-				"$regex": filter
-			}
-		}, {
-			lastName: {
-				"$regex": filter
-			}
-		}]
-	})
+        $or: [{
+            firstname: {
+                "$regex": filter
+            }
+        }, {
+            lastname: {
+                "$regex": filter
+            }
+        }]
+    })
 
-	return res.status(200).json({
-		user: users.map(user => ({
-			username: user.username,
-			firstname: user.firstname,
-			lastname: user.lastname,
-			_id : user._id
-		}))
-	});
+	res.json({
+        user: users.map(user => ({
+            username: user.username,
+            firstname: user.firstname,
+            lastname: user.lastname,
+            _id: user._id
+        }))
+    })
 
 }
 

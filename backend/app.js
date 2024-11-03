@@ -7,12 +7,7 @@ const router = Router();
 
 const app = express();
 // use method is mostly used for middlewares and to config
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN,
-    credentials: true,
-  })
-);
+app.use(cors());
 
 // middleware need to use before all things
 app.use(express.json());

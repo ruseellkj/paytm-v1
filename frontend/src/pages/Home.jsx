@@ -1,4 +1,5 @@
 'use client'
+import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 
 export const Home = () => {
@@ -31,6 +32,7 @@ export const Home = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

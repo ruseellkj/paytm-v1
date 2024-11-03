@@ -40,12 +40,12 @@ export const Header = () => {
                     ))}
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end ">
-                    <button className=' bg-sky-500 shadow-inner rounded-md mr-4 px-8 py-2'>
+                    <button className=' bg-sky-500 hover:bg-sky-600 shadow-inner rounded-md mr-4 px-8 py-2'>
                         <a href="/signup" className="text-sm/6 font-semibold text-white">
                             Sign Up
                         </a>
                     </button>
-                    <button className='bg-sky-500 shadow-inner rounded-md ml-4 px-8 py-2'>
+                    <button className='bg-sky-500 hover:bg-sky-600 shadow-inner rounded-md ml-4 px-8 py-2'>
                         <a href="/signin" className="text-sm/6 font-semibold text-white">
                             Sign In
                         </a>

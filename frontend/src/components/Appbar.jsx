@@ -3,7 +3,7 @@ export const Appbar = () => {
         <div className="flex flex-col justify-center h-full ml-10">
             <img
                 alt=""
-                src="/public/logo.png"
+                src="/logo.png"
                 className="h-12 w-auto"
             />
         </div>
