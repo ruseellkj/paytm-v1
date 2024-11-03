@@ -20,7 +20,7 @@ export const Users = () => {
 
     return (
         <>
-            <div className="font-bold text-md">
+            <div className="font-bold text-lg">
                 Users
             </div>
             <div className="mt-3">

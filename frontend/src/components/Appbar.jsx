@@ -11,7 +11,7 @@ export const Appbar = () => {
 
     const handleSignOut = () => {
         localStorage.removeItem("token");
-        navigate("/signin");
+        navigate("/");
     };
 
     // Close dropdown when clicking outside
@@ -34,7 +34,7 @@ export const Appbar = () => {
     }, []);
 
     return (
-        <div className="shadow h-14 flex justify-between">
+        <div className="shadow h-14 flex justify-between my-2">
             <div className="flex flex-col justify-center h-full ml-10">
                 <img
                     alt="Logo"

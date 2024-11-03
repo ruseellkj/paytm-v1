@@ -1,5 +1,6 @@
 'use client'
 import { Bars3Icon } from '@heroicons/react/24/outline'
+import { Link } from 'react-router-dom'
 
 const navigation = [
     { name: 'Home', href: '#' },
@@ -13,14 +14,14 @@ export const Header = () => {
         <header className="absolute inset-x-0 top-0 z-50">
             <nav aria-label="Global" className="flex items-center justify-between py-2 lg:px-8">
                 <div className="flex lg:flex-1">
-                    <a href="/" className="-m-1.5 p-1.5">
+                    <Link to="/" className="-m-1.5 p-1.5">
                         <img
                             alt=""
                             src="/logo.png"
                             className="h-20 w-auto"
                         />
                         <p className='text-center font-medium text-black hover:text-sky-900'>easyTxn</p>
-                    </a>
+                    </Link>
                 </div>
                 <div className="flex lg:hidden">
                     <button
@@ -34,21 +35,21 @@ export const Header = () => {
                 </div>
                 <div className="hidden lg:flex lg:gap-x-12">
                     {navigation.map((item) => (
-                        <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900">
+                        <Link key={item.name} to={item.href} className="text-sm/6 font-semibold text-gray-900">
                             {item.name}
-                        </a>
+                        </Link>
                     ))}
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end ">
                     <button className=' bg-sky-500 hover:bg-sky-600 shadow-inner rounded-md mr-4 px-8 py-2'>
-                        <a href="/signup" className="text-sm/6 font-semibold text-white">
+                        <Link to="/signup" className="text-sm/6 font-semibold text-white">
                             Sign Up
-                        </a>
+                        </Link>
                     </button>
                     <button className='bg-sky-500 hover:bg-sky-600 shadow-inner rounded-md ml-4 px-8 py-2'>
-                        <a href="/signin" className="text-sm/6 font-semibold text-white">
+                        <Link to="/signin" className="text-sm/6 font-semibold text-white">
                             Sign In
-                        </a>
+                        </Link>
                     </button>
                 </div>
             </nav>

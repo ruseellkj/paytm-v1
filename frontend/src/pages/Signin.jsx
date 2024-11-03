@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { Header } from "../components/Header";
 
 export const Signin = () => {
 
@@ -12,7 +12,8 @@ export const Signin = () => {
 
     return (
         <div>
-            <section className="bg-white dark:bg-gray-900">
+            <Header />
+            <section className="bg-white dark:bg-gray-900 pt-10">
                 <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                     <div className="w-full bg-white rounded-xl shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -47,7 +48,7 @@ export const Signin = () => {
                                     localStorage.setItem("token", response.data.token)
                                     navigate("/dashboard?firstname=" + response.data.firstname)}}>Sign In</button>
                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                Dont have an account? <a href="/signup" className="font-medium text-sky-500 hover:underline dark:text-sky-600">Sign Up</a>
+                                Dont have an account? <Link to="/signup" className="font-medium text-sky-500 hover:underline dark:text-sky-600">Sign Up</Link>
                             </p>
                         </form>
                     </div>
