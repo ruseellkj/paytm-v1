@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 export const Appbar = () => {
     const [searchParams] = useSearchParams();
@@ -14,7 +14,6 @@ export const Appbar = () => {
         navigate("/");
     };
 
-    // Close dropdown when clicking outside
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (
@@ -25,10 +24,8 @@ export const Appbar = () => {
             }
         };
 
-        // Attach the event listener
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
-            // Clean up the event listener
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
@@ -36,11 +33,13 @@ export const Appbar = () => {
     return (
         <div className="shadow h-14 flex justify-between my-2">
             <div className="flex flex-col justify-center h-full ml-10">
-                <img
-                    alt="Logo"
-                    src="/logo.png"
-                    className="h-12 w-auto cursor-pointer"
-                />
+                <Link to='/'>
+                    <img
+                        alt="Logo"
+                        src="/logo.png"
+                        className="h-12 w-auto cursor-pointer"
+                    />
+                </Link>
             </div>
             <div className="flex relative">
                 <div className="flex flex-col justify-center h-full mr-4">
@@ -59,19 +58,15 @@ export const Appbar = () => {
                 {isDropdownOpen && (
                     <div
                         ref={dropdownRef} // Reference for the dropdown element
-                        className="absolute right-0 w-40 bg-white shadow-lg rounded-md mt-2"
-                    >
+                        className="absolute right-0 w-40 bg-white shadow-lg rounded-md mt-2">
                         <ul className="py-2">
-                            <li
-                                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                                onClick={handleSignOut} // Sign out functionality
-                            >
-                                Sign Out
+                            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={handleSignOut}>
+                                    Sign Out
                             </li>
-                        </ul>
+                    </ul>
                     </div>
                 )}
-            </div>
         </div>
+        </div >
     );
 };

@@ -12,6 +12,12 @@ export const SendMoney = () => {
     const [transferSuccess, setTransferSuccess] = useState(false);
 
     const handleTransfer = async () => {
+
+        if (id === id) {
+            alert("You can't transfer money to yourself.");
+            return;
+        }
+
         setLoading(true); 
         try {
             await axios.post("http://localhost:3000/api/v1/account/transfer", {
@@ -43,7 +49,7 @@ export const SendMoney = () => {
                     </div>
                     <div className="px-8 py-11">
                         <div className="flex items-center space-x-4">
-                            <div className="w-12 h-12 rounded-full bg-sky-700 flex items-center justify-center">
+                            <div className="w-12 h-12 rounded-full bg-sky-500 flex items-center justify-center">
                                 <span className="text-2xl text-white">{name[0].toUpperCase()}</span>
                             </div>
                             <h3 className="text-2xl font-semibold">{name.charAt(0).toUpperCase() + name.slice(1)}</h3>

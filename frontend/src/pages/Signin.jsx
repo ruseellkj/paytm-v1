@@ -46,6 +46,7 @@ export const Signin = () => {
                                     );
                                     console.log("Token:", response.data.token); // Check if the token exists
                                     localStorage.setItem("token", response.data.token)
+                                    localStorage.setItem("firstname", response.data.firstname)
                                     navigate("/dashboard?firstname=" + response.data.firstname)}}>Sign In</button>
                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Dont have an account? <Link to="/signup" className="font-medium text-sky-500 hover:underline dark:text-sky-600">Sign Up</Link>

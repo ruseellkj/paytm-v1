@@ -3,13 +3,14 @@ import { Bars3Icon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 
 const navigation = [
-    { name: 'Home', href: '#' },
-    { name: 'Txn', href: '#' },
-    { name: 'Company', href: '#' },
-    { name: 'Contact', href: '#' },
+    { name: 'Home', to: '/' },
+    { name: 'Txn', to: '#' },
+    { name: 'Company', to: '#' },
+    { name: 'Contact', to: '#' },
 ]
 
 export const Header = () => {
+
     return (
         <header className="absolute inset-x-0 top-0 z-50">
             <nav aria-label="Global" className="flex items-center justify-between py-2 lg:px-8">
@@ -20,7 +21,7 @@ export const Header = () => {
                             src="/logo.png"
                             className="h-20 w-auto"
                         />
-                        <p className='text-center font-medium text-black hover:text-sky-900'>easyTxn</p>
+                        <p className='text-center font-medium text-black hover:text-sky-900'>goTransfer</p>
                     </Link>
                 </div>
                 <div className="flex lg:hidden">
@@ -35,7 +36,7 @@ export const Header = () => {
                 </div>
                 <div className="hidden lg:flex lg:gap-x-12">
                     {navigation.map((item) => (
-                        <Link key={item.name} to={item.href} className="text-sm/6 font-semibold text-gray-900">
+                        <Link key={item.name} to={item.to} className="text-sm/6 font-semibold text-gray-900">
                             {item.name}
                         </Link>
                     ))}

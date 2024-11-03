@@ -1,8 +1,20 @@
 'use client'
+import { useNavigate } from 'react-router-dom';
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
+import { useEffect } from 'react';
 
 export const Home = () => {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        const firstname = localStorage.getItem("firstname");
+        if (token) {
+            navigate(`/dashboard?firstname=${firstname}`);
+        }
+    }, [navigate]);
 
     return (
         <div className="bg-white">
@@ -11,7 +23,7 @@ export const Home = () => {
                 <div className="mx-auto max-w-2xl py-30 sm:py-48 lg:py-56">
                     <div className="hidden sm:mb-8 sm:flex sm:justify-center">
                         <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-sky-900/30">
-                            Introducing our new app easyTxn
+                            Introducing our new app goTransfer
                         </div>
                     </div>
                     <div className="text-center">
@@ -26,7 +38,7 @@ export const Home = () => {
                                 href="#"
                                 className="rounded-full bg-sky-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
-                                Download easyTxn App
+                                Download goTransfer App
                             </a>
                         </div>
                     </div>

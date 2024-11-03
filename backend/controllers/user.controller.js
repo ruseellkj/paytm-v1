@@ -80,7 +80,7 @@ const signupUser = async (req, res) => {
 	return res.status(200).send({
 		msg: "User registred Successfully",
 		token: token,
-        balance: account.balance
+        firstname: user.firstname
 	});
 };
 

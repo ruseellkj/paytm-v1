@@ -62,6 +62,7 @@ export const Signup = () => {
                                     );
                                     console.log("Token:", response.data.token); // Check if the token exists
                                     localStorage.setItem("token", response.data.token)
+                                    localStorage.setItem("firstname", response.data.firstname)
                                     navigate("/dashboard?firstname=" + firstname)
                                 }}>Sign Up</button>
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
