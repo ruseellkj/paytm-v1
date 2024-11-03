@@ -21,7 +21,7 @@ export const Header = () => {
                             src="/logo.png"
                             className="h-20 w-auto"
                         />
-                        <p className='text-center font-medium text-black hover:text-sky-900'>goTransfer</p>
+                        <p className='text-center font-bold text-black hover:text-sky-900'>goTransfer</p>
                     </Link>
                 </div>
                 <div className="flex lg:hidden">
