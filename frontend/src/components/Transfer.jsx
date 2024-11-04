@@ -11,7 +11,7 @@ export const Transfer = ({ firstname }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowConfetti(false);
-        }, 5000); // Confetti lasts for 4 seconds
+        }, 3000); // Confetti lasts for 4 seconds
         return () => clearTimeout(timer);
     }, []);
 

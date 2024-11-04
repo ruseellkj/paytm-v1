@@ -12,12 +12,6 @@ export const SendMoney = () => {
     const [transferSuccess, setTransferSuccess] = useState(false);
 
     const handleTransfer = async () => {
-
-        if (id === id) {
-            alert("You can't transfer money to yourself.");
-            return;
-        }
-
         setLoading(true); 
         try {
             const backendURL = import.meta.env.VITE_BACKEND_URL
