@@ -20,7 +20,8 @@ export const SendMoney = () => {
 
         setLoading(true); 
         try {
-            await axios.post("http://localhost:3000/api/v1/account/transfer", {
+            const backendURL = import.meta.env.VITE_BACKEND_URL
+            await axios.post(`${backendURL}/account/transfer`, {
                 toUser: id,
                 amount
             }, {

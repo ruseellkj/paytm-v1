@@ -53,7 +53,8 @@ export const Signup = () => {
                                 <button type="submit" className="w-full text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" onClick={
                                     async (e) => {
                                     e.preventDefault();
-                                    const response = await axios.post("http://localhost:3000/api/v1/user/signup", {
+                                    const backendURL = import.meta.env.VITE_BACKEND_URL;
+                                    const response = await axios.post(`${backendURL}/user/signup`, {
                                         username,
                                         password,
                                         firstname,

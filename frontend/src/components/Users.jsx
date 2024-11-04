@@ -12,7 +12,8 @@ export const Users = () => {
     // debouncing 
     let timeout;
     useEffect(() => {
-        axios.get("http://localhost:3000/api/v1/user/bulk?filter=" + filter)
+        const backendURL = import.meta.env.VITE_BACKEND_URL;
+        axios.get(`${backendURL}/user/bulk?filter=` + filter)
             .then(response => {
                 setUsers(response.data.user)
             })
